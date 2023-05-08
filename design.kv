@@ -1,0 +1,79 @@
+<LoginScreen>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols:1
+            Label:
+                text: "User Login"
+            TextInput:
+                id: username
+                hint_text: "Username"
+            TextInput:
+                id: password
+                hint_text: "Password"
+            Button:
+                text: "Login"
+                on_press: root.log_in(root.ids.username.text, root.ids.password.text)
+            Label:
+                id: login_wrong
+                text: ""
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Forgot Password?"
+            Button:
+                text: "Sign Up"
+                on_press: root.sign_up()
+<SignUpScreen>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up for Cheer Up!"
+        TextInput:
+            id: fullname
+            hint_text: "Full Name"
+        TextInput:
+            id: username
+            hint_text: "User Name"
+        TextInput
+            id: password
+            hint_text: "Password"
+        Button:
+            text: "Submit"
+            on_press: root.add_user(root.ids.fullname.text,root.ids.username.text, root.ids.password.text)
+<SignUpSuccessful>
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Successful"
+        Button:
+            text: "Back to login page"
+            on_press: root.LoginScreen()
+<AfterLogin>
+    GridLayout:
+        cols: 1
+        Button:
+            text: "Logout"
+            on_press: root.log_out()
+        Label:
+            text: "How do you feel?"
+        TextInput
+            id: usr_feeling
+            hint_text: "Try: happy, sad, unloved"
+        Button:
+            text: "Cheer me!"
+            on_press: root.get_quote(usr_feeling.text)
+        Label:
+            id: quotes
+            text: ""
+
+
+<RootWidget>:
+    LoginScreen:
+        name: "login_screen"
+    SignUpScreen:
+        name: "sign_up_screen"
+    SignUpSuccessful:
+        name: "sign_up_successful"
+    AfterLogin:
+        name: "after_login"
